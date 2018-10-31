@@ -1,5 +1,5 @@
 #!/bin/bash -e
 
 if [ ! -d "${ROOTFS_DIR}" ]; then
-	bootstrap stretch "${ROOTFS_DIR}" http://raspbian.raspberrypi.org/raspbian/
+	bootstrap xenial "${ROOTFS_DIR}" http://ports.ubuntu.com/ubuntu-ports/
 fi
