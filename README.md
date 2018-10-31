@@ -64,13 +64,31 @@ The following environment variables are supported:
 
  * `DEPLOY_DIR`  (Default: `"$BASE_DIR/deploy"`)
 
-   Output directory for target system images and NOOBS bundles.
+   Output directory for target system images.
+
+* `SKIP_STAGES`  (Default: unset)
+
+   Postfixes of stages which you wish not to include to execute. Setting 
+   `SKIP_STAGES="1 2:00 4"` will result skip `stage1`, `stage2/00-substage` 
+   and `stage4` during the build.
+
+* `RM_STAGE_EXPORTS_POSTFIXES`  (Default: unset)
+
+   Postfixes of stages on which you wish not to export the image in. Setting 
+   `RM_STAGE_EXPORTS_POSTFIXES="4"` will result to skip `stage4` image export.
+
+* `CPU_CORES` (Default: unset)
+
+   Number of parallel jobs for sources compiling.
 
 
-A simple example for building Raspbian:
+A simple example for building Xenial:
 
 ```bash
-IMG_NAME='Raspbian'
+IMG_NAME='Xenial'
+SKIP_STAGES="3 4 5"  
+RM_STAGE_EXPORTS_POSTFIXES="3 4 5"
+CPU_CORES="8"
 ```
 
 
