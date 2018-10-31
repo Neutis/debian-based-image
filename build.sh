@@ -114,6 +114,15 @@ run_stage(){
 	log "End ${STAGE_DIR}"
 }
 
+
+# if docker is running /proc/1/cgroup contains 'docker' in each line
+if [[ -z "$(cat /proc/1/cgroup | grep '^.*:/docker/' )" ]]; then
+    echo "Execution of build.sh directly is deprecated. \
+It may break your system. 
+Please, run ./build-docker instead." 1>&2
+    exit 1
+fi
+
 if [ "$(id -u)" != "0" ]; then
 	echo "Please run as root" 1>&2
 	exit 1
@@ -136,20 +145,39 @@ export WORK_DIR=${WORK_DIR:-"${BASE_DIR}/work/${IMG_DATE}-${IMG_NAME}"}
 export DEPLOY_DIR=${DEPLOY_DIR:-"${BASE_DIR}/deploy"}
 export LOG_FILE="${WORK_DIR}/build.log"
 
+export DOWNLOADS_DIR="${WORK_DIR}/downloads"
+export SOURCES_DIR="${WORK_DIR}/sources"
+
+export LINUX_VERSION="4.17.2"
+export LINUX_SRC="${SOURCES_DIR}/linux"
+export LINUX_ARCHIVE_NAME="linux-${LINUX_VERSION}.tar.gz"
+
+export U_BOOT_VERSION="2018.07"
+export U_BOOT_SRC="${SOURCES_DIR}/u-boot"
+export U_BOOT_ARCHIVE_NAME="u-boot-${U_BOOT_VERSION}.tar.gz"
+
+export GCC_LINARO_VERSION="6.4.1"
+export GCC_LINARO_SRC="${SOURCES_DIR}/gcc-linaro"
+export GCC_LINARO_ARCHIVE_NAME="gcc-linaro.tar.gz"
+
+export ATF_SUNXI_SRC="${SOURCES_DIR}/atf-sunxi"
+
+export META_EMLID_NEUTIS_SRC="${SOURCES_DIR}/meta-emlid-neutis"
+
 export CLEAN
 export IMG_NAME
 export APT_PROXY
+export CPU_CORES
 
 export STAGE
 export STAGE_DIR
+export SUB_STAGE_DIR
 export STAGE_WORK_DIR
 export PREV_STAGE
 export PREV_STAGE_DIR
 export ROOTFS_DIR
 export PREV_ROOTFS_DIR
 export IMG_SUFFIX
-export NOOBS_NAME
-export NOOBS_DESCRIPTION
 export EXPORT_DIR
 export EXPORT_ROOTFS_DIR
 
@@ -159,6 +187,7 @@ export QUILT_NO_DIFF_TIMESTAMPS=1
 export QUILT_REFRESH_ARGS="-p ab"
 
 source ${SCRIPT_DIR}/common
+source ${SCRIPT_DIR}/utils
 source ${SCRIPT_DIR}/dependencies_check
 
 
@@ -167,6 +196,7 @@ dependencies_check ${BASE_DIR}/depends
 mkdir -p ${WORK_DIR}
 log "Begin ${BASE_DIR}"
 
+set_up_stages_skip
 for STAGE_DIR in ${BASE_DIR}/stage*; do
 	run_stage
 done
@@ -177,11 +207,6 @@ for EXPORT_DIR in ${EXPORT_DIRS}; do
 	source "${EXPORT_DIR}/EXPORT_IMAGE"
 	EXPORT_ROOTFS_DIR=${WORK_DIR}/$(basename ${EXPORT_DIR})/rootfs
 	run_stage
-	if [ -e ${EXPORT_DIR}/EXPORT_NOOBS ]; then
-		source ${EXPORT_DIR}/EXPORT_NOOBS
-		STAGE_DIR=${BASE_DIR}/export-noobs
-		run_stage
-	fi
 done
 
 if [ -x postrun.sh ]; then
