@@ -1,0 +1,11 @@
+--- a/sshd_config	2018-10-26 11:18:53.831078705 +0000
++++ b/sshd_config	2018-10-26 11:19:04.218063306 +0000
+@@ -25,7 +25,7 @@
+ 
+ # Authentication:
+ LoginGraceTime 120
+-PermitRootLogin prohibit-password
++PermitRootLogin yes
+ StrictModes yes
+ 
+ RSAAuthentication yes
