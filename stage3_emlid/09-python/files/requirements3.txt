@@ -1,4 +1,0 @@
-future
-coloredlogs
-navio2
-emlidtool>=0.9.5
