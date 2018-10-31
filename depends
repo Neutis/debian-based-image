@@ -11,3 +11,11 @@ bsdtar
 grep
 rsync
 xz:xz-utils
+swig
+dtc:device-tree-compiler
+make
+cmake
+bison
+flex
+bc
+python
