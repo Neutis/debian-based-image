@@ -1,17 +1,15 @@
 #!/bin/bash -e
 
 install -m 644 files/sources.list ${ROOTFS_DIR}/etc/apt/
-install -m 644 files/raspi.list ${ROOTFS_DIR}/etc/apt/sources.list.d/
+install -m 644 files/neutis.list ${ROOTFS_DIR}/etc/apt/sources.list.d/
+install -m 644 files/hosts ${ROOTFS_DIR}/etc/hosts
+install -m 644 files/hostname ${ROOTFS_DIR}/etc/hostname
 
 if [ -n "$APT_PROXY" ]; then
-	install -m 644 files/51cache ${ROOTFS_DIR}/etc/apt/apt.conf.d/51cache
-	sed ${ROOTFS_DIR}/etc/apt/apt.conf.d/51cache -i -e "s|APT_PROXY|${APT_PROXY}|"
-else
-	rm -f ${ROOTFS_DIR}/etc/apt/apt.conf.d/51cache
+	echo "Acquire::http::Proxy \"${APT_PROXY}\";" > ${ROOTFS_DIR}/etc/apt/apt.conf
 fi
 
-on_chroot apt-key add - < files/raspberrypi.gpg.key
 on_chroot << EOF
 apt-get update
-apt-get dist-upgrade -y
+apt-get upgrade -y
 EOF
