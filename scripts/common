@@ -4,20 +4,17 @@ log (){
 export -f log
 
 bootstrap(){
-	local ARCH
-	ARCH=$(dpkg --print-architecture)
+	local ARCH=$(dpkg --print-architecture)
 
-	export http_proxy=${APT_PROXY}
-
-	if [ "$ARCH" !=  "armhf" ]; then
+	if [ "$ARCH" !=  "arm64" ]; then
 		local BOOTSTRAP_CMD=qemu-debootstrap
 	else
 		local BOOTSTRAP_CMD=debootstrap
 	fi
 
 	capsh --drop=cap_setfcap -- -c "${BOOTSTRAP_CMD} --components=main,contrib,non-free \
-		--arch armhf \
-		--keyring "${STAGE_DIR}/files/raspberrypi.gpg" \
+		--arch arm64 \
+		--keyring "${STAGE_DIR}/files/ubuntu-archive-keyring.gpg" \
 		$1 $2 $3" || rmdir "$2/debootstrap"
 }
 export -f bootstrap
@@ -95,3 +92,13 @@ update_issue() {
 }
 export -f update_issue
 
+apply_patches()
+{
+  local patches_dir=$1
+  local patchfiles=`ls $patches_dir | grep .patch`
+  for patch in $patchfiles; do
+    echo "Applying $patch patchfile."
+    patch --batch --silent -p1 -N < "${patches_dir}/${patch}" > /dev/null
+  done;
+}
+export -f apply_patches
