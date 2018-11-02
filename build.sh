@@ -156,7 +156,7 @@ export U_BOOT_VERSION="2018.07"
 export U_BOOT_SRC="${SOURCES_DIR}/u-boot"
 export U_BOOT_ARCHIVE_NAME="u-boot-${U_BOOT_VERSION}.tar.gz"
 
-export GCC_LINARO_VERSION="6.4.1"
+export GCC_LINARO_VERSION="7.3.1"
 export GCC_LINARO_SRC="${SOURCES_DIR}/gcc-linaro"
 export GCC_LINARO_ARCHIVE_NAME="gcc-linaro.tar.gz"
 
