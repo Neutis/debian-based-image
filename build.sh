@@ -114,14 +114,14 @@ run_stage(){
 	log "End ${STAGE_DIR}"
 }
 
-
+# TODO: create clearer solution for this
 # if docker is running /proc/1/cgroup contains 'docker' in each line
-if [[ -z "$(cat /proc/1/cgroup | grep '^.*:/docker/' )" ]]; then
-    echo "Execution of build.sh directly is deprecated. \
-It may break your system. 
-Please, run ./build-docker instead." 1>&2
-    exit 1
-fi
+# if [[ -z "$(cat /proc/1/cgroup | grep '^.*:/docker/' )" ]]; then
+#     echo "Execution of build.sh directly is deprecated. \
+# It may break your system. 
+# Please, run ./build-docker instead." 1>&2
+#     exit 1
+# fi
 
 if [ "$(id -u)" != "0" ]; then
 	echo "Please run as root" 1>&2
