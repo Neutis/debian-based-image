@@ -2,9 +2,9 @@
 
 LINUX_SOURCE_LINK="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/snapshot/${LINUX_ARCHIVE_NAME}"
 U_BOOT_SOURCE_LINK="https://github.com/u-boot/u-boot/archive/v${U_BOOT_VERSION}.tar.gz"
-ATF_SOURCE_LINK="https://github.com/Andre-ARM/arm-trusted-firmware.git"
-ATF_SOURCE_BRANCH="allwinner/pmic-v2"
-ATF_SOURCE_COMMIT_HASH=7db0c96023281d8a530f5e011a232e5d56557437
+ATF_SOURCE_LINK="https://github.com/apritzel/arm-trusted-firmware.git"
+ATF_SOURCE_BRANCH="master"
+ATF_SOURCE_COMMIT_HASH=318c2f9760377605ba257b5799bbdf52139030dd
 GCC_SOURCE_LINK="https://releases.linaro.org/components/toolchain/binaries/latest-7/aarch64-linux-gnu/gcc-linaro-${GCC_LINARO_VERSION}-2018.05-x86_64_aarch64-linux-gnu.tar.xz"
 META_EMLID_NEUTIS_SOURCE_LINK="https://github.com/Neutis/meta-emlid-neutis.git"
 META_EMLID_NEUTIS_BRANCH="sumo"
