@@ -23,7 +23,7 @@ if [ ! -f "$DOWNLOADS_DIR/$GCC_LINARO_ARCHIVE_NAME" ]; then
     wget $GCC_SOURCE_LINK \
     --output-document=$DOWNLOADS_DIR/$GCC_LINARO_ARCHIVE_NAME --no-verbose
 fi
-if [ ! -f "$ATF_SUNXI_SRC" ]; then
+if [ ! -d "$ATF_SUNXI_SRC" ]; then
     git clone -b $ATF_SOURCE_BRANCH --single-branch $ATF_SOURCE_LINK $ATF_SUNXI_SRC
     pushd $ATF_SUNXI_SRC
     git checkout $ATF_SOURCE_COMMIT_HASH >-
