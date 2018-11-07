@@ -8,7 +8,7 @@ ATF_SOURCE_COMMIT_HASH=318c2f9760377605ba257b5799bbdf52139030dd
 GCC_SOURCE_LINK="https://releases.linaro.org/components/toolchain/binaries/latest-7/aarch64-linux-gnu/gcc-linaro-${GCC_LINARO_VERSION}-2018.05-x86_64_aarch64-linux-gnu.tar.xz"
 META_EMLID_NEUTIS_SOURCE_LINK="https://github.com/Neutis/meta-emlid-neutis.git"
 META_EMLID_NEUTIS_BRANCH="sumo"
-META_EMLID_NEUTIS_COMMIT_HASH=df64f87ab79ebf84b0e263e3c081ad1764193d3e
+META_EMLID_NEUTIS_COMMIT_HASH=e020b06b5c5b36581ae72ab7a4b932913cdf96a0
 
 
 if [ ! -f "$DOWNLOADS_DIR/$LINUX_ARCHIVE_NAME" ]; then
