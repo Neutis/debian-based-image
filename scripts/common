@@ -73,7 +73,7 @@ on_chroot() {
 	if ! mount | grep -q "$(realpath "${ROOTFS_DIR}"/dev)"; then
 		mount --bind /dev "${ROOTFS_DIR}/dev"
 	fi
-	
+
 	if ! mount | grep -q "$(realpath "${ROOTFS_DIR}"/dev/pts)"; then
 		mount --bind /dev/pts "${ROOTFS_DIR}/dev/pts"
 	fi
@@ -98,7 +98,7 @@ apply_patches()
   local patchfiles=`ls $patches_dir | grep .patch`
   for patch in $patchfiles; do
     echo "Applying $patch patchfile."
-    patch --batch --silent -p1 -N < "${patches_dir}/${patch}" > /dev/null
+    patch --batch --silent -p1 -N < "${patches_dir}/${patch}"
   done;
 }
 export -f apply_patches
