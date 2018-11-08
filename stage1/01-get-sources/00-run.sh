@@ -25,15 +25,11 @@ if [ ! -f "$DOWNLOADS_DIR/$GCC_LINARO_ARCHIVE_NAME" ]; then
 fi
 if [ ! -d "$ATF_SUNXI_SRC" ]; then
     git clone -b $ATF_SOURCE_BRANCH --single-branch $ATF_SOURCE_LINK $ATF_SUNXI_SRC
-    pushd $ATF_SUNXI_SRC
-    git checkout $ATF_SOURCE_COMMIT_HASH >-
-    popd
+    git -C $ATF_SUNXI_SRC checkout $ATF_SOURCE_COMMIT_HASH >-
 fi
 if [ ! -d $META_EMLID_NEUTIS_SRC ]; then
     git clone -b $META_EMLID_NEUTIS_BRANCH --single-branch $META_EMLID_NEUTIS_SOURCE_LINK $META_EMLID_NEUTIS_SRC
-    pushd $META_EMLID_NEUTIS_SRC
-    git checkout $META_EMLID_NEUTIS_COMMIT_HASH >-
-    popd
+    git -C $META_EMLID_NEUTIS_SRC checkout $META_EMLID_NEUTIS_COMMIT_HASH >-
 fi
 
 if [[ -z "$(ls -A $LINUX_SRC)" ]]; then
