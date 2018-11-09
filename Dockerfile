@@ -1,12 +1,14 @@
-FROM debian:stretch
+FROM ubuntu:18.04
 
 RUN apt-get -y update && \
-    apt-get -y install \
-        git vim parted \
-        quilt realpath qemu-user-static debootstrap zerofree pxz zip dosfstools \
+        apt-get install -y git vim parted \
+        quilt coreutils qemu-user-static debootstrap zerofree pxz zip dosfstools \
         bsdtar libcap2-bin rsync grep udev curl xz-utils swig device-tree-compiler \
         make cmake bison flex bc libssl-dev u-boot-tools python python-dev \
-    && rm -rf /var/lib/apt/lists/*
+        locales kmod
+
+RUN locale-gen en_US.UTF-8
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 COPY . /neutis-debian/
 
