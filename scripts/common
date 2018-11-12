@@ -66,6 +66,11 @@ unmount_image(){
 export -f unmount_image
 
 on_chroot() {
+	if [[ -z "${ROOTFS_DIR}" ]]; then
+		echo "ROOTFS_DIR variable is empty, unable to mount."
+		exit 1
+	fi
+
 	if ! mount | grep -q "$(realpath "${ROOTFS_DIR}"/proc)"; then
 		mount -t proc proc "${ROOTFS_DIR}/proc"
 	fi
