@@ -136,6 +136,9 @@ if [ -z "${IMG_NAME}" ]; then
 	echo "IMG_NAME not set" 1>&2
 	exit 1
 fi
+if [ -z "${CPU_CORES}" ]; then
+	CPU_CORES=1
+fi
 
 export IMG_DATE=${IMG_DATE:-"$(date +%Y-%m-%d-%H:%M)"}
 
