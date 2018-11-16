@@ -42,3 +42,4 @@ cp ${linux_overlay_dir}/sun50i-h5-camera-status-okay.dtbo $OVERLAY_DIR
 
 git -C ${META_EMLID_NEUTIS_SRC} checkout ${ROCKO_META_EMLID_NEUTIS_HASH} >-
 cp ${META_EMLID_NEUTIS_SRC}/meta-neutis-bsp/recipes-bsp/neutis-initramfs/files/uInitrd ${BOOT_DIR}
+git -C ${META_EMLID_NEUTIS_SRC} checkout - >-
