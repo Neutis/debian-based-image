@@ -10,6 +10,6 @@ RUN apt-get -y update && \
 RUN locale-gen en_US.UTF-8
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
-COPY . /neutis-debian/
+COPY . /neutis-debian-based-image/
 
-VOLUME [ "/neutis-debian/work", "/neutis-debian/deploy"]
+VOLUME [ "/neutis-debian-based-image/work", "/neutis-debian-based-image/deploy"]

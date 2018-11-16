@@ -1,6 +1,6 @@
-# neutis-debian-builder
+# neutis-debian-based-image
 
-_Tool used to create the [neutis-n5](https://neutis.io/) debian-based images_
+_Tool used to create the debian-based images for [neutis-n5](https://neutis.io/)_
 
 
 ## Dependencies
@@ -40,7 +40,7 @@ The following environment variables are supported:
 
  * `WORK_DIR`  (Default: `"$BASE_DIR/work"`)
 
-   Directory in which `neutis-debian-builder` builds the target system.  
+   Directory in which `neutis-debian-based-image` builds the target system.  
    This value can be changed if you have a suitably large, fast storage location
    for stages to be built and cached.  Note, `WORK_DIR` stores a complete copy
    of the target system for each build stage.
@@ -79,18 +79,18 @@ CPU_CORES="16"
 #### Build an image
 1) create a docker image
 ```
-cd /path/to/neutis-debian
-docker build -t neutis-debian:$USER -f Dockerfile .
+cd /path/to/neutis-debian-based-image
+docker build -t neutis-debian-based-image:$USER -f Dockerfile .
 ```
 2) create & connect to docker container
 ```
-docker start -a -i `docker create -t -i --privileged neutis-debian:$USER bash`
+docker start -a -i `docker create -t -i --privileged neutis-debian-based-image:$USER bash`
 ```
 **Hint**: to set up a custom location for docker storage use `-g` option.
 
 3) create config file
 ```
-cd neutis-debian
+cd neutis-debian-based-image
 printf "IMG_NAME='Xenial'
 SKIP_STAGES='34'
 RM_STAGE_EXPORTS_POSTFIXES='4'
@@ -103,7 +103,7 @@ dpkg-reconfigure qemu-user-static
 ```
 5) If everything runs correctly your image will be in `deploy`. Now you can copy it, from your host system execute:
 ```
-docker cp <containerId>:neutis-debian/work/buildname/deploy/image /host/path/target
+docker cp <containerId>:neutis-debian-based-image/work/buildname/deploy/image /host/path/target
 ```
 6) Clean-up hints:
 - To get list of docker containers use `docker ps -a`, to remove docker container use `docker rm <container_id>``.
@@ -124,7 +124,7 @@ In case of any error build process will be stopped:
 ## Stage Anatomy
 
 ### Overview
-The neutis-debian build system is based on [pi-gen-navio](https://github.com/emlid/pi-gen-navio) and uses scripts and
+The neutis-debian-based-image build system is based on [pi-gen-navio](https://github.com/emlid/pi-gen-navio) and uses scripts and
 stage structure from it. The build is divided up into several stages for logical
 clarity and modularity. This causes some initial complexity, but it simplifies
 maintenance and allows for more easy customization.
