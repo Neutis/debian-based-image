@@ -1,11 +1,29 @@
---- a/boot.cmd	2018-10-30 12:19:09.903195099 +0300
-+++ b/boot.cmd	2018-10-30 21:15:49.258024388 +0300
-@@ -37,7 +38,7 @@
+--- a/boot.cmd	2018-11-18 10:51:48.131834906 +0300
++++ b/boot.cmd	2018-11-18 10:50:55.052854691 +0300
+@@ -9,7 +9,7 @@
+ setenv load_addr "0x44000000"
+ setenv overlay_error "false"
+ setenv device "0"
+-setenv prefix ""
++setenv prefix "/boot/"
+
+ if itest.b *0x10028 == 0x00 ; then
+     echo "U-boot loaded from SD"
+@@ -29,7 +29,7 @@
+     setenv rootdev "${rootdev}p${mender_boot_part}"
+     setenv prefix "boot/"
+ else
+-    setenv rootdev "${rootdev}p2"
++    setenv rootdev "${rootdev}p1"
+ fi
+
+ if test -e mmc ${device} ${prefix}Env.txt; then
+@@ -37,7 +37,7 @@
      env import -t ${load_addr} ${filesize}
  fi
- 
+
 -setenv bootargs "console=${console} earlyprintk root=${rootdev} rw rootwait resize.root=yes panic=10 loglevel=${loglevel}"
 +setenv bootargs "console=${console} earlyprintk root=${rootdev} rw rootwait fsck.repair=yes panic=10 loglevel=${loglevel}"
- 
+
  # Load DT file
  load mmc ${device} ${fdt_addr_r} ${prefix}${fdtfile}
