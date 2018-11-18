@@ -92,7 +92,7 @@ docker start -a -i `docker create -t -i --privileged neutis-debian-based-image:$
 ```
 cd neutis-debian-based-image
 printf "IMG_NAME='Xenial'
-SKIP_STAGES='34'
+SKIP_STAGES='4'
 RM_STAGE_EXPORTS_POSTFIXES='4'
 CPU_CORES='16'" > config
 ```
