@@ -1,0 +1,6 @@
+Package: neutis-n5-initramfs
+Version: 0.0.1
+Maintainer: Alexander Yashin <alexandr.yashin@emlid.com>
+Architecture: arm64
+Section: base
+Description: Neutis-n5 initramfs.
