@@ -1,0 +1,6 @@
+Package: neutis-n5-device-tree
+Version: 0.0.1
+Maintainer: Alexander Yashin <alexandr.yashin@emlid.com>
+Architecture: arm64
+Section: base
+Description: Neutis-n5 device tree blobs and overlays.
