@@ -165,6 +165,8 @@ export ATF_SUNXI_SRC="${SOURCES_DIR}/atf-sunxi"
 
 export META_EMLID_NEUTIS_SRC="${SOURCES_DIR}/meta-emlid-neutis"
 
+export META_SUNXI_SRC="${SOURCES_DIR}/meta-sunxi"
+
 export CLEAN
 export IMG_NAME
 export APT_PROXY
