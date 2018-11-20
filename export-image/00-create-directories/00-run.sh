@@ -12,3 +12,6 @@ for directory in $directories_list
 do
     mkdir -p $directory
 done
+
+rm -rf ${ROOTFS_DIR}/var/cache/apt/archives
+mkdir -p ${ROOTFS_DIR}/var/cache/apt/archives
