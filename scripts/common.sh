@@ -91,12 +91,6 @@ on_chroot() {
 }
 export -f on_chroot
 
-update_issue() {
-  local GIT_HASH=$(git rev-parse HEAD)
-  echo -e "Emlid ${IMG_DATE}\n${GIT_HASH}\nGenerated from ${1}" > ${ROOTFS_DIR}/etc/rpi-issue
-}
-export -f update_issue
-
 apply_patches()
 {
   local patches_dir=$1
