@@ -14,7 +14,7 @@ bootstrap(){
 
   capsh --drop=cap_setfcap -- -c "${BOOTSTRAP_CMD} --components=main,contrib,non-free \
     --arch arm64 \
-    --keyring "${STAGE_DIR}/files/ubuntu-archive-keyring.gpg" \
+    --variant=minbase \
     $1 $2 $3" || rmdir "$2/debootstrap"
 }
 export -f bootstrap
