@@ -104,18 +104,17 @@ export -f apply_patches
 
 build_deb_package()
 {
-  local package_source_dir=$1
-  local package_name=${package_source_dir}.deb
+  local package_name=${PACKAGE_DEB_DIR}.deb
 
-  cp files/control ${package_source_dir}/DEBIAN
-  fakeroot dpkg-deb --build ${package_source_dir}
+  cp files/control ${PACKAGE_DEB_DIR}/DEBIAN
+  fakeroot dpkg-deb --build ${PACKAGE_DEB_DIR}
   cp ${package_name} ${ROOTFS_DIR}/var/cache/apt/archives
 }
 export -f build_deb_package
 
 install_deb_package()
 {
-  local package_name=$1
+  local package_name=${PACKAGE_NAME}.deb
   on_chroot << EOF
 dpkg -i /var/cache/apt/archives/${package_name}
 EOF
