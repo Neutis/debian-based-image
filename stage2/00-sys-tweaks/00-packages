@@ -1,1 +1,12 @@
-ssh psmisc ed vim unzip parted python3
+ssh
+psmisc
+vim
+zip
+unzip
+lsof
+parted
+python3
+git-core
+man-db
+i2c-tools
+alsa-utils
