@@ -1,1 +1,5 @@
-ifupdown network-manager bluez
+ifupdown
+network-manager
+bluez
+wireless-tools
+rfkill
