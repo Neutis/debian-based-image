@@ -16,7 +16,7 @@ EOF
 		fi
 		if [ -f ${i}-packages-nr ]; then
 			log "Begin ${SUB_STAGE_DIR}/${i}-packages-nr"
-			PACKAGES="$(sed -f "${SCRIPT_DIR}/remove-comments.sed" < ${i}-packages-nr)"
+			PACKAGES="$(sed -f "${LIB_DIR}/remove-comments.sed" < ${i}-packages-nr)"
 			if [ -n "$PACKAGES" ]; then
 				on_chroot << EOF
 apt-get install --no-install-recommends -y $PACKAGES
@@ -26,7 +26,7 @@ EOF
 		fi
 		if [ -f ${i}-packages ]; then
 			log "Begin ${SUB_STAGE_DIR}/${i}-packages"
-			PACKAGES="$(sed -f "${SCRIPT_DIR}/remove-comments.sed" < ${i}-packages)"
+			PACKAGES="$(sed -f "${LIB_DIR}/remove-comments.sed" < ${i}-packages)"
 			if [ -n "$PACKAGES" ]; then
 				on_chroot << EOF
 apt-get install -y $PACKAGES
@@ -141,7 +141,7 @@ fi
 export IMG_DATE=${IMG_DATE:-"$(date +%Y-%m-%d-%H:%M)"}
 
 export BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-export SCRIPT_DIR="${BASE_DIR}/scripts"
+export LIB_DIR="${BASE_DIR}/lib"
 export WORK_DIR=${WORK_DIR:-"${BASE_DIR}/work/${IMG_NAME}"}
 export DEPLOY_DIR=${DEPLOY_DIR:-"${BASE_DIR}/deploy"}
 export LOG_FILE="${WORK_DIR}/build.log"
@@ -189,8 +189,8 @@ export QUILT_NO_DIFF_INDEX=1
 export QUILT_NO_DIFF_TIMESTAMPS=1
 export QUILT_REFRESH_ARGS="-p ab"
 
-source ${SCRIPT_DIR}/common.sh
-source ${SCRIPT_DIR}/utils.sh
+source ${LIB_DIR}/common.sh
+source ${LIB_DIR}/utils.sh
 
 
 mkdir -p ${WORK_DIR}
