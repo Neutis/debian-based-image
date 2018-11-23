@@ -31,7 +31,7 @@ export LIB_DIR="${BASE_DIR}/lib"
 export WORK_DIR=${WORK_DIR:-"${BASE_DIR}/work/${IMG_NAME}"}
 export DEPLOY_DIR=${DEPLOY_DIR:-"${BASE_DIR}/deploy"}
 export LOG_FILE="${WORK_DIR}/build.log"
-export DEFAULT_DEVICE_NAME="neutis-n5"
+export DEFAULT_DEVICE_NAME="-neutis-n5"
 
 export DOWNLOADS_DIR="${WORK_DIR}/downloads"
 export SOURCES_DIR="${WORK_DIR}/sources"
@@ -56,7 +56,6 @@ export META_SUNXI_SRC="${SOURCES_DIR}/meta-sunxi"
 
 export CLEAN
 export IMG_NAME
-export APT_PROXY
 export CPU_CORES
 
 export STAGE
