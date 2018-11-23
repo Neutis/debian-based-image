@@ -1,13 +1,13 @@
 #!/bin/bash -e
 
-PACKAGE_NAME=neutis-n5-kernel-headers
-KERNEL_HEADERS_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
+export PACKAGE_NAME=neutis-n5-kernel-headers
+export PACKAGE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
 
-mkdir -p ${KERNEL_HEADERS_DEB_DIR}/usr/src/linux-headers-${LINUX_VERSION}
-mkdir -p ${KERNEL_HEADERS_DEB_DIR}/DEBIAN
+mkdir -p ${PACKAGE_DEB_DIR}/usr/src/linux-headers-${LINUX_VERSION}
+mkdir -p ${PACKAGE_DEB_DIR}/DEBIAN
 
-cp -R ${LINUX_SRC}/build-headers/include/* ${KERNEL_HEADERS_DEB_DIR}/usr/src/linux-headers-${LINUX_VERSION}
-cp files/control ${KERNEL_HEADERS_DEB_DIR}/DEBIAN
+cp -R ${LINUX_SRC}/build-headers/include/* ${PACKAGE_DEB_DIR}/usr/src/linux-headers-${LINUX_VERSION}
+cp files/control ${PACKAGE_DEB_DIR}/DEBIAN
 
-build_deb_package ${KERNEL_HEADERS_DEB_DIR}
-install_deb_package ${PACKAGE_NAME}.deb
+build_deb_package
+install_deb_package

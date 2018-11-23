@@ -1,12 +1,12 @@
 #!/bin/bash -e
 
-PACKAGE_NAME=neutis-n5-kernel-modules
-KERNEL_MODULES_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
+export PACKAGE_NAME=neutis-n5-kernel-modules
+export PACKAGE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
 
-mkdir -p ${KERNEL_MODULES_DEB_DIR}/lib/modules/
-mkdir -p ${KERNEL_MODULES_DEB_DIR}/DEBIAN
+mkdir -p ${PACKAGE_DEB_DIR}/lib/modules/
+mkdir -p ${PACKAGE_DEB_DIR}/DEBIAN
 
-cp -R ${LINUX_SRC}/build-modules/lib/modules/${LINUX_VERSION} ${KERNEL_MODULES_DEB_DIR}/lib/modules/
+cp -R ${LINUX_SRC}/build-modules/lib/modules/${LINUX_VERSION} ${PACKAGE_DEB_DIR}/lib/modules/
 
-build_deb_package ${KERNEL_MODULES_DEB_DIR}
-install_deb_package ${PACKAGE_NAME}.deb
+build_deb_package
+install_deb_package

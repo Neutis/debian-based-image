@@ -2,14 +2,14 @@
 
 LINUX_ALLWINNER_DIR="${LINUX_SRC}/arch/arm64/boot/dts/allwinner"
 LINUX_OVERLAY_DIR="${LINUX_ALLWINNER_DIR}/overlay"
-PACKAGE_NAME=neutis-n5-device-tree
 
-DEVICE_TREE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
-ALLWINNER_PATH="${DEVICE_TREE_DEB_DIR}/boot/allwinner"
+export PACKAGE_NAME=neutis-n5-device-tree
+export PACKAGE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
+ALLWINNER_PATH="${PACKAGE_DEB_DIR}/boot/allwinner"
 OVERLAY_PATH="${ALLWINNER_PATH}/overlay"
 
 mkdir -p ${OVERLAY_PATH}
-mkdir -p ${DEVICE_TREE_DEB_DIR}/DEBIAN
+mkdir -p ${PACKAGE_DEB_DIR}/DEBIAN
 
 cp ${LINUX_ALLWINNER_DIR}/sun50i-h5-emlid-neutis-n5-devboard.dtb ${ALLWINNER_PATH}
 cp ${LINUX_ALLWINNER_DIR}/sun50i-h5-emlid-neutis-n5.dtb ${ALLWINNER_PATH}
@@ -33,5 +33,5 @@ cp ${LINUX_OVERLAY_DIR}/sun50i-h5-usbhost3.dtbo ${OVERLAY_PATH}
 cp ${LINUX_OVERLAY_DIR}/sun50i-h5-hdmi.dtbo ${OVERLAY_PATH}
 cp ${LINUX_OVERLAY_DIR}/sun50i-h5-camera-status-okay.dtbo ${OVERLAY_PATH}
 
-build_deb_package ${DEVICE_TREE_DEB_DIR}
-install_deb_package ${PACKAGE_NAME}.deb
+build_deb_package
+install_deb_package
