@@ -3,6 +3,7 @@ work/*
 config
 postrun.sh
 SKIP
+EXPORT-IMAGE
 .pc
 *-pc
 apt-cacher-ng/
