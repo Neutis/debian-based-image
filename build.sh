@@ -31,6 +31,7 @@ export LIB_DIR="${BASE_DIR}/lib"
 export WORK_DIR=${WORK_DIR:-"${BASE_DIR}/work/${IMG_NAME}"}
 export DEPLOY_DIR=${DEPLOY_DIR:-"${BASE_DIR}/deploy"}
 export LOG_FILE="${WORK_DIR}/build.log"
+export DEFAULT_DEVICE_NAME="neutis-n5"
 
 export DOWNLOADS_DIR="${WORK_DIR}/downloads"
 export SOURCES_DIR="${WORK_DIR}/sources"
@@ -77,13 +78,14 @@ export QUILT_REFRESH_ARGS="-p ab"
 
 source ${LIB_DIR}/stages.sh
 source ${LIB_DIR}/common.sh
-source ${LIB_DIR}/utils.sh
+source ${LIB_DIR}/config.sh
 
 
 mkdir -p ${WORK_DIR}
 log "Begin ${BASE_DIR}"
 
 set_up_stages_skip
+set_up_export_stages
 for STAGE_DIR in ${BASE_DIR}/stage*; do
 	run_stage
 done
