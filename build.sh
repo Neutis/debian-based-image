@@ -51,11 +51,6 @@ export IMG_SUFFIX
 export EXPORT_DIR
 export EXPORT_ROOTFS_DIR
 
-export QUILT_PATCHES
-export QUILT_NO_DIFF_INDEX=1
-export QUILT_NO_DIFF_TIMESTAMPS=1
-export QUILT_REFRESH_ARGS="-p ab"
-
 
 mkdir -p ${WORK_DIR}
 log "Begin ${BASE_DIR}"
@@ -73,12 +68,5 @@ for EXPORT_DIR in ${EXPORT_DIRS}; do
 	EXPORT_ROOTFS_DIR=${WORK_DIR}/$(basename ${EXPORT_DIR})/rootfs
 	run_stage
 done
-
-if [ -x postrun.sh ]; then
-	log "Begin postrun.sh"
-	cd "${BASE_DIR}"
-	./postrun.sh
-	log "End postrun.sh"
-fi
 
 log "End ${BASE_DIR}"
