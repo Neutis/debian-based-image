@@ -13,6 +13,7 @@ cp ${META_EMLID_NEUTIS_SRC}/meta-neutis-bsp/recipes-bsp/u-boot/u-boot/boot.cmd .
 apply_patches ${SUB_STAGE_DIR}/files
 mkimage -C none -A arm -T script -d boot.cmd boot.scr
 cp boot.scr ${PACKAGE_DEB_DIR}/boot
+rm PATCHED
 popd
 
 cp $META_EMLID_NEUTIS_SRC/meta-neutis-bsp/recipes-bsp/u-boot/u-boot/Env.txt $PACKAGE_DEB_DIR/boot
