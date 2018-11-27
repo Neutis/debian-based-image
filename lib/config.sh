@@ -1,3 +1,16 @@
+apply_config_file()
+{
+  if [ -f config ]; then
+	  source config
+  fi
+  if [ -z "${IMG_NAME}" ]; then
+    IMAGE_NAME="neutis-n5-xenial"
+  fi
+  if [ -z "${CPU_CORES}" ]; then
+	  CPU_CORES=1
+  fi
+}
+
 set_up_stages_skip()
 {
   log "Begin set_up_stages_skip"
