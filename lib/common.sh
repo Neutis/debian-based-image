@@ -3,6 +3,24 @@ log (){
 }
 export -f log
 
+check_build_environment(){
+  if [[ $(systemd-detect-virt) == "none" ]]; then
+    echo "Execution of build.sh directly is deprecated.
+It may break your system.
+Please, run ./build-docker instead." 1>&2
+    exit 1
+  fi
+}
+export -f check_build_environment
+
+check_root_rights(){
+  if [ "$(id -u)" != "0" ]; then
+	  echo "Please run as root" 1>&2
+	  exit 1
+  fi
+}
+export -f check_root_rights
+
 bootstrap(){
   local ARCH=$(dpkg --print-architecture)
 
