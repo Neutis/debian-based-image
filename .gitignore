@@ -1,9 +1,6 @@
+config
+SKIP
+EXPORT_IMAGE
+PATCHED
 deploy/*
 work/*
-config
-postrun.sh
-SKIP
-EXPORT-IMAGE
-.pc
-*-pc
-apt-cacher-ng/
