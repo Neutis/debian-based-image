@@ -37,15 +37,26 @@ bootstrap(){
 }
 export -f bootstrap
 
-copy_previous(){
-  if [ ! -d "${PREV_ROOTFS_DIR}" ]; then
-    echo "Previous stage rootfs not found"
+copy(){
+  source=$1
+  if [ ! -d "${source}" ]; then
+    echo "Stage rootfs ${source} not found."
     false
   fi
   mkdir -p "${ROOTFS_DIR}"
-  rsync -aHAXx --exclude var/cache/apt/archives "${PREV_ROOTFS_DIR}/" "${ROOTFS_DIR}/"
+  rsync -aHAXx --exclude var/cache/apt/archives "${source}/" "${ROOTFS_DIR}/"
+}
+export -f copy
+
+copy_previous(){
+  copy ${PREV_ROOTFS_DIR}
 }
 export -f copy_previous
+
+copy_previous_for_export(){
+  copy ${EXPORT_ROOTFS_DIR}
+}
+export -f copy_previous_for_export
 
 unmount(){
   if [ -z "$1" ]; then
