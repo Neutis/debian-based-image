@@ -4,3 +4,4 @@ EXPORT_IMAGE
 PATCHED
 deploy/*
 work/*
+*.done
