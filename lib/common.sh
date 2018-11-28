@@ -7,7 +7,7 @@ check_build_environment(){
   if [[ $(systemd-detect-virt) == "none" ]]; then
     echo "Execution of build.sh directly is deprecated.
 It may break your system.
-Please, run ./build-docker instead." 1>&2
+Please, run ./build inside the docker container." 1>&2
     exit 1
   fi
 }
