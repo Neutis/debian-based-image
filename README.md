@@ -29,7 +29,6 @@ CPU_CORES='16'" > config
 ```
 4) Run build.
 ```
-root@container$ dpkg-reconfigure qemu-user-static
 root@container$ ./build.sh
 ```
 5) If everything runs correctly your image will be in `deploy`. Now you can copy it:
