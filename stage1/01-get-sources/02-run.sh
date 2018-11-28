@@ -9,8 +9,9 @@ if [ ! -f "${DOWNLOADS_DIR}/${GCC_LINARO_ARCHIVE_NAME}.done" ]; then
     touch "${DOWNLOADS_DIR}/${GCC_LINARO_ARCHIVE_NAME}.done"
 fi
 
-if [[ -z "$(ls -A ${GCC_LINARO_SRC})" ]]; then
+if [ ! -f "${GCC_LINARO_SRC}.done" ]; then
     tar -xf ${DOWNLOADS_DIR}/${GCC_LINARO_ARCHIVE_NAME} \
         --directory ${GCC_LINARO_SRC} \
         --strip-components=1
+    touch "${GCC_LINARO_SRC}.done"
 fi

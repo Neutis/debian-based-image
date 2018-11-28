@@ -9,8 +9,9 @@ if [ ! -f "${DOWNLOADS_DIR}/${LINUX_ARCHIVE_NAME}.done" ]; then
     touch "${DOWNLOADS_DIR}/${LINUX_ARCHIVE_NAME}.done"
 fi
 
-if [[ -z "$(ls -A ${LINUX_SRC})" ]]; then
+if [ ! -f "${LINUX_SRC}.done" ]; then
     tar -zxf ${DOWNLOADS_DIR}/${LINUX_ARCHIVE_NAME} \
         --directory ${LINUX_SRC} \
         --strip-components=1
+    touch "${LINUX_SRC}.done"
 fi

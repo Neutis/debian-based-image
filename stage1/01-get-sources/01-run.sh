@@ -9,8 +9,9 @@ if [ ! -f "${DOWNLOADS_DIR}/${U_BOOT_ARCHIVE_NAME}.done" ]; then
     touch "${DOWNLOADS_DIR}/${U_BOOT_ARCHIVE_NAME}.done"
 fi
 
-if [[ -z "$(ls -A ${U_BOOT_SRC})" ]]; then
+if [ ! -f "${U_BOOT_SRC}.done" ]; then
     tar -zxf ${DOWNLOADS_DIR}/${U_BOOT_ARCHIVE_NAME} \
         --directory ${U_BOOT_SRC} \
         --strip-components=1
+    touch -f "${U_BOOT_SRC}.done"
 fi
