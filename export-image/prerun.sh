@@ -49,4 +49,4 @@ mkfs.ext4 -O $ROOT_FEATURES $ROOT_DEV > /dev/null
 
 mount -v $ROOT_DEV ${ROOTFS_DIR} -t ext4
 
-rsync -aHAXx --exclude var/cache/apt/archives ${EXPORT_ROOTFS_DIR}/ ${ROOTFS_DIR}/
+copy_previous_for_export
