@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-export PACKAGE_NAME=neutis-n5-linux-image
-export PACKAGE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
+PACKAGE_NAME=neutis-n5-linux-image
+PACKAGE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
 
 mkdir -p ${PACKAGE_DEB_DIR}/DEBIAN
 mkdir -p ${PACKAGE_DEB_DIR}/boot

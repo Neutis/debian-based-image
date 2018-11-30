@@ -3,8 +3,8 @@
 LINUX_ALLWINNER_DIR="${LINUX_SRC}/arch/arm64/boot/dts/allwinner"
 LINUX_OVERLAY_DIR="${LINUX_ALLWINNER_DIR}/overlay"
 
-export PACKAGE_NAME=neutis-n5-device-tree
-export PACKAGE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
+PACKAGE_NAME=neutis-n5-device-tree
+PACKAGE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
 ALLWINNER_PATH="${PACKAGE_DEB_DIR}/boot/allwinner"
 OVERLAY_PATH="${ALLWINNER_PATH}/overlay"
 

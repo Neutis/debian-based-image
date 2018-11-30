@@ -2,8 +2,8 @@
 
 ROCKO_META_EMLID_NEUTIS_HASH=858be875304f728db22a7f921dfd2ee635b9a191
 
-export PACKAGE_NAME=neutis-n5-initramfs
-export PACKAGE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
+PACKAGE_NAME=neutis-n5-initramfs
+PACKAGE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
 
 mkdir -p ${PACKAGE_DEB_DIR}/boot
 mkdir -p ${PACKAGE_DEB_DIR}/DEBIAN

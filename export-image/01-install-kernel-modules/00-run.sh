@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-export PACKAGE_NAME=neutis-n5-kernel-modules
-export PACKAGE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
+PACKAGE_NAME=neutis-n5-kernel-modules
+PACKAGE_DEB_DIR=${STAGE_WORK_DIR}/packages/${PACKAGE_NAME}
 
 mkdir -p ${PACKAGE_DEB_DIR}/lib/modules/
 mkdir -p ${PACKAGE_DEB_DIR}/DEBIAN
