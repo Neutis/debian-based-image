@@ -18,10 +18,10 @@ cp ${AP6212_FILES}/brcmfmac43430-sdio.txt ${AP6212_PATH}
 cp ${AP6212_FILES}/LICENSE.broadcom ${AP6212_PATH}
 cp ${AP6212_FILES}/LICENSE.broadcom_brcm80211 ${AP6212_PATH}
 ln -sf /lib/firmware/ap6212/brcmfmac43430a0-sdio.bin ${BRCM_PATH}/brcmfmac43430a0-sdio.bin
-ln -sf /lib/firmware/ap6212/brcmfmac43430a0-sdio.txt ${BRCM_PATH}/brcmfmac43430-sdio.txt
+ln -sf /lib/firmware/ap6212/brcmfmac43430-sdio.txt ${BRCM_PATH}/brcmfmac43430a0-sdio.txt
 ln -sf /lib/firmware/ap6212/brcmfmac43430-sdio.bin ${BRCM_PATH}/brcmfmac43430-sdio.bin
 ln -sf /lib/firmware/ap6212/brcmfmac43430-sdio.txt ${BRCM_PATH}/brcmfmac43430-sdio.txt
-ln -sf /lib/firmware/ap6212/BCM43430A1.hcd ${BRCM_PATH}/bcm43438a1.hcd
+ln -sf /lib/firmware/ap6212/bcm43438a1.hcd ${BRCM_PATH}/BCM43430A1.hcd
 cp files/control ${PACKAGE_DEB_DIR}/DEBIAN
 
 build_deb_package
