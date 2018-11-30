@@ -1,4 +1,4 @@
-# neutis-debian-based-image
+# Neutis Debian-based image
 
 Debian-based Linux images for [neutis-n5](https://neutis.io/)
 
@@ -22,9 +22,19 @@ user@host$ docker start -a -i docker_container_id
 3) Create config file.
 ```
 root@container$ cd neutis-debian-based-image
+```
+to build bootable and server images:
+```
+root@container$ printf "IMG_NAME='Xenial'
+SKIP_STAGES='3'
+EXPORT_STAGES='1:-bootable 2:-server'
+CPU_CORES='16'" > config
+```
+to build desktop image:
+```
 root@container$ printf "IMG_NAME='Xenial'
 SKIP_STAGES=''
-EXPORT_STAGES='1:-bootable 2:-server 3:-desktop'
+EXPORT_STAGES='3:-desktop'
 CPU_CORES='16'" > config
 ```
 4) Run build.
