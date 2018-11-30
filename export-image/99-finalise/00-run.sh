@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-IMG_FILE="${STAGE_WORK_DIR}/${IMG_DATE}-${IMG_NAME}${IMG_SUFFIX}.img"
+IMG_FILE="${STAGE_WORK_DIR}/${IMG_NAME}${IMG_SUFFIX}-${IMG_DATE}.img"
 rm -rf ${ROOTFS_DIR}/var/cache/apt/archives
 unmount_image ${IMG_FILE}
 

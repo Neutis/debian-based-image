@@ -12,7 +12,7 @@ check_root_rights
 apply_config_file
 
 
-export IMG_DATE=${IMG_DATE:-"$(date +%Y-%m-%d-%H:%M)"}
+export IMG_DATE=${IMG_DATE:-"$(date +%Y%m%d%H%M%S)"}
 
 export WORK_DIR=${WORK_DIR:-"${BASE_DIR}/work/${IMG_NAME}"}
 export DEPLOY_DIR=${DEPLOY_DIR:-"${BASE_DIR}/deploy"}
