@@ -28,7 +28,7 @@ export LINUX_SRC="${SOURCES_DIR}/linux"
 export U_BOOT_VERSION="2018.07"
 export U_BOOT_SRC="${SOURCES_DIR}/u-boot"
 
-export GCC_LINARO_VERSION="7.3.1"
+export GCC_LINARO_VERSION="7.4-2019.02"
 export GCC_LINARO_SRC="${SOURCES_DIR}/gcc-linaro"
 
 export ATF_SUNXI_SRC="${SOURCES_DIR}/atf-sunxi"
