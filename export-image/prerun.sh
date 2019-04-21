@@ -36,6 +36,12 @@ ROOT_OFFSET=$(echo "$PARTED_OUT" | grep -e '^ 1'| xargs echo -n \
 ROOT_LENGTH=$(echo "$PARTED_OUT" | grep -e '^ 1'| xargs echo -n \
 | cut -d" " -f 4 | tr -d B)
 
+BUSY_LOOPS=$(losetup --list --output NAME,BACK-FILE | grep docker.*${IMG_NAME} | cut -d ' ' -f 1)
+for loop in ${BUSY_LOOPS}; do
+    losetup -d ${loop}
+    echo "loop ${loop} is detached"
+done
+
 ROOT_DEV=$(losetup --show -f -o ${ROOT_OFFSET} --sizelimit ${ROOT_LENGTH} ${IMG_FILE})
 echo "/:     offset $ROOT_OFFSET, length $ROOT_LENGTH"
 
